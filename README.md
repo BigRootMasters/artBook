@@ -5,3 +5,10 @@ collect the art files
 2. manager主要后台管理
 3. task模块负责定时任务
 4. mq模块主要负责对外业务
+
+技术选型
+1.mysql
+2.redis
+3.juc
+4.Gateway+zk+kafka+Nacos+dubbo
+5.es
