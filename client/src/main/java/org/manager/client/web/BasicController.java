@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.manager.client.galaxy.web;
+package org.manager.client.web;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;

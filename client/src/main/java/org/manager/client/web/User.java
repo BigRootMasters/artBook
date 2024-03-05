@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.manager.client.galaxy.web;
+package org.manager.client.web;
 
 /**
  * @author <a href="mailto:chenxilzx1@gmail.com">theonefx</a>

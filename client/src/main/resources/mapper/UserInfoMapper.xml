@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.manager.client.mapper.UserInfoMapper">
+
+    <resultMap id="BaseResultMap" type="org.manager.client.mapper.dao.UserInfoDO">
+        <id property="id" column="id" jdbcType="BIGINT"/>
+        <result property="createdBy" column="created_by" jdbcType="VARCHAR"/>
+        <result property="gmtCreate" column="gmt_create" jdbcType="TIMESTAMP"/>
+        <result property="modifiedBy" column="modified_by" jdbcType="VARCHAR"/>
+        <result property="gmtModified" column="gmt_modified" jdbcType="TIMESTAMP"/>
+        <result property="username" column="username" jdbcType="VARCHAR"/>
+        <result property="password" column="password" jdbcType="VARCHAR"/>
+        <result property="phoneNumber" column="phone_number" jdbcType="VARCHAR"/>
+        <result property="email" column="email" jdbcType="VARCHAR"/>
+        <result property="userNo" column="user_no" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+                id, created_by, gmt_create,
+                modified_by, gmt_modified, username,
+                password, phone_number, email,
+                user_no
+    </sql>
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from user_info
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    <select id="queryAll" resultType="org.manager.client.mapper.dao.UserInfoDO">
+        select
+        <include refid="Base_Column_List"/>
+        from user_info
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete
+        from user_info
+        where id = #{id,jdbcType=BIGINT}
+    </delete>
+    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="org.manager.client.mapper.dao.UserInfoDO"
+            useGeneratedKeys="true" >
+        insert into user_info
+        ( id, created_by, gmt_create
+        , modified_by, gmt_modified, username
+        , password, phone_number, email
+        , user_no)
+        values ( #{id,jdbcType=BIGINT}, #{createdBy,jdbcType=VARCHAR}, #{gmtCreate,jdbcType=TIMESTAMP}
+               , #{modifiedBy,jdbcType=VARCHAR}, #{gmtModified,jdbcType=TIMESTAMP}, #{username,jdbcType=VARCHAR}
+               , #{password,jdbcType=VARCHAR}, #{phoneNumber,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}
+               , #{userNo,jdbcType=VARCHAR})
+    </insert>
+    <insert id="insertSelective" keyColumn="id" keyProperty="id"
+            parameterType="org.manager.client.mapper.dao.UserInfoDO" useGeneratedKeys="true" >
+        insert into user_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">id,</if>
+            <if test="createdBy != null">created_by,</if>
+            <if test="gmtCreate != null">gmt_create,</if>
+            <if test="modifiedBy != null">modified_by,</if>
+            <if test="gmtModified != null">gmt_modified,</if>
+            <if test="username != null">username,</if>
+            <if test="password != null">password,</if>
+            <if test="phoneNumber != null">phone_number,</if>
+            <if test="email != null">email,</if>
+            <if test="userNo != null">user_no,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">#{id,jdbcType=BIGINT},</if>
+            <if test="createdBy != null">#{createdBy,jdbcType=VARCHAR},</if>
+            <if test="gmtCreate != null">#{gmtCreate,jdbcType=TIMESTAMP},</if>
+            <if test="modifiedBy != null">#{modifiedBy,jdbcType=VARCHAR},</if>
+            <if test="gmtModified != null">#{gmtModified,jdbcType=TIMESTAMP},</if>
+            <if test="username != null">#{username,jdbcType=VARCHAR},</if>
+            <if test="password != null">#{password,jdbcType=VARCHAR},</if>
+            <if test="phoneNumber != null">#{phoneNumber,jdbcType=VARCHAR},</if>
+            <if test="email != null">#{email,jdbcType=VARCHAR},</if>
+            <if test="userNo != null">#{userNo,jdbcType=VARCHAR},</if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="org.manager.client.mapper.dao.UserInfoDO">
+        update user_info
+        <set>
+            <if test="createdBy != null">
+                created_by = #{createdBy,jdbcType=VARCHAR},
+            </if>
+            <if test="gmtCreate != null">
+                gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="modifiedBy != null">
+                modified_by = #{modifiedBy,jdbcType=VARCHAR},
+            </if>
+            <if test="gmtModified != null">
+                gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+            </if>
+            <if test="username != null">
+                username = #{username,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null">
+                password = #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="phoneNumber != null">
+                phone_number = #{phoneNumber,jdbcType=VARCHAR},
+            </if>
+            <if test="email != null">
+                email = #{email,jdbcType=VARCHAR},
+            </if>
+            <if test="userNo != null">
+                user_no = #{userNo,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="org.manager.client.mapper.dao.UserInfoDO">
+        update user_info
+        set created_by   = #{createdBy,jdbcType=VARCHAR},
+            gmt_create   = #{gmtCreate,jdbcType=TIMESTAMP},
+            modified_by  = #{modifiedBy,jdbcType=VARCHAR},
+            gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+            username     = #{username,jdbcType=VARCHAR},
+            password     = #{password,jdbcType=VARCHAR},
+            phone_number = #{phoneNumber,jdbcType=VARCHAR},
+            email        = #{email,jdbcType=VARCHAR},
+            user_no      = #{userNo,jdbcType=VARCHAR}
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+
+    <update id="updateUserNo">
+        update user_info
+        set user_no = #{userNo}
+        where id = #{id}
+    </update>
+</mapper>

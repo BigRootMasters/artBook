@@ -12,3 +12,13 @@ collect the art files
 3.juc
 4.Gateway+zk+kafka+Nacos+dubbo
 5.es
+
+项目目标：
+1.使用Gateway
+2.使用nacos
+3.使用kafka
+4.使用zk
+5.使用定时任务
+6.使用Dubbo
+7.使用rabbitMq
+8.使用ES

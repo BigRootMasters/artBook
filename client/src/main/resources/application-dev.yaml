@@ -1,0 +1,24 @@
+#  datasource
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/artbook?characterEncoding=utf-8&&serverTimezone=GMT%2B8
+    username: likuan
+    password: likuankuan
+
+
+#  log
+logging:
+  level:
+    root: debug
+
+mybatis:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations: classpath*:mapper/*.xml
+  type-aliases-package: org.manager.client.mapper
+
+
+
+server:
+  port: 8080
